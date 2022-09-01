@@ -5,10 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 10f; // 이동 속도
+    public float maxHealth; // 최대 체력
+    public float armor; // 방어력
+    public float recovery; // 회복
+
     private Vector3 moveVec; // 이동 벡터
 
     private float h, v;
-    private float speed;
 
     Animator anim;
     Rigidbody rigid;
@@ -25,7 +28,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Move();
+        Move(); 
     }
     void GetInput()
     {
@@ -36,15 +39,10 @@ public class PlayerController : MonoBehaviour
     {
         moveVec = new Vector3(h, 0, v).normalized;
 
-        float param = moveVec.magnitude;
-
-        if (moveVec == Vector3.zero) { param = 0.01f; }
-        else { param = 1.0f; }
         rigid.velocity = moveVec * moveSpeed * Time.deltaTime;
 
-        const float LerpSpeed = 0.05f;
-        speed = Mathf.Lerp(speed, param, LerpSpeed);
-        anim.SetFloat("moveSpeed", speed);
+        anim.SetBool("isMove", moveVec != Vector3.zero);
+
     }
     void Rotate()
     {
