@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 10f; // 이동 속도
+    public float moveSpeed = 100f; // 이동 속도
     public float maxHealth; // 최대 체력
     public float armor; // 방어력
     public float recovery; // 회복
