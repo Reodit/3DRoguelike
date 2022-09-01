@@ -11,35 +11,36 @@ public class PlayerController : MonoBehaviour
     private float speed;
 
     Animator anim;
+    Rigidbody rigid;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        rigid = GetComponent<Rigidbody>();
     }
     void Update()
     {
         GetInput();
-        Move();
         Rotate();
+    }
+    private void FixedUpdate()
+    {
+        Move();
     }
     void GetInput()
     {
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        h = Input.GetAxis("Horizontal");
+        v = Input.GetAxis("Vertical");
     }
     void Move()
     {
-
         moveVec = new Vector3(h, 0, v).normalized;
 
         float param = moveVec.magnitude;
 
-        if((h==0f) && (v==0f)) { param = 0.0f; }
-        else 
-        {
-            param = 1.0f; 
-        }
-        transform.position += moveVec * moveSpeed * Time.deltaTime;
+        if (moveVec == Vector3.zero) { param = 0.01f; }
+        else { param = 1.0f; }
+        rigid.velocity = moveVec * moveSpeed * Time.deltaTime;
 
         const float LerpSpeed = 0.05f;
         speed = Mathf.Lerp(speed, param, LerpSpeed);
