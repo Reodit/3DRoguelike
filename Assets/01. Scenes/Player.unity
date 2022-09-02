@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 945514433}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -502,10 +502,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931f9a41f96010843bed5b873641687f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateSpeed: 15
   moveSpeed: 5
   maxHealth: 0
   armor: 0
   recovery: 0
+  jumpPower: 5
 --- !u!54 &1629991443
 Rigidbody:
   m_ObjectHideFlags: 0
