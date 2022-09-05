@@ -147,6 +147,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8703872773199547215, guid: 64c9d96775079344fac674889078804c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703872773199547215, guid: 64c9d96775079344fac674889078804c, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -507,7 +511,7 @@ MonoBehaviour:
   maxHealth: 0
   armor: 0
   recovery: 0
-  jumpPower: 5
+  jumpPower: 4
 --- !u!54 &1629991443
 Rigidbody:
   m_ObjectHideFlags: 0
