@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c40be66-bae1-41dc-9f6b-bb156601cc50" name="Changes" comment="" />
+    <list default="true" id="3c40be66-bae1-41dc-9f6b-bb156601cc50" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.3DRoguelike/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3DRoguelike/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Enemy.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Enemy.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Enemy/PTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Enemy/PTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/enemy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/enemy.cs.meta" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/enemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/Enemy/EnemyStat.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -70,6 +76,9 @@
       <updated>1661998306336</updated>
       <workItem from="1661998338118" duration="1027000" />
       <workItem from="1661999833170" duration="2749000" />
+      <workItem from="1662451904615" duration="7558000" />
+      <workItem from="1662461132917" duration="928000" />
+      <workItem from="1662462227466" duration="2289000" />
     </task>
     <servers />
   </component>
@@ -79,6 +88,17 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

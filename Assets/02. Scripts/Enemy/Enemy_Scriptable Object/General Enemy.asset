@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9ea6daf706e47b8b2ce1c8a16a1bee, type: 3}
+  m_Name: General Enemy
+  m_EditorClassIdentifier: 
+  enemyName: NormalMop
+  maxHp: 110
+  hp: 110
+  damage: 5
+  speed: 3
+  knockback: 2
+  xp: 6
+  isAlive: 0
+  isMelee: 1
+  isBoss: 0
+  sightRange: 20
+  attackRange: 3
+  attackDeley: 0.3
