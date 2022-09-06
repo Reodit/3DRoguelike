@@ -12,8 +12,6 @@ public class FollowCam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = new Vector3(0, 8f, -4f);
-        orbit = new Vector3(60f, 0f, 0f);
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
     }
