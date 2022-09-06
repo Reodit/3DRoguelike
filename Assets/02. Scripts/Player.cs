@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private bool attackDown;
 
     private bool NormalAtkDelay;
-    private float delayTime = 2f;
+    private float delayTime = 0.5f;
     private float timer = 0f;
 
     Animator anim;
@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
             Debug.Log("Attack");
             anim.SetTrigger("NormalAttack");
 
-            Invoke("NormalAttackEnd", 2.0f);
+            Invoke("NormalAttackEnd", 0.5f);
         }
     }
     void NormalAttackEnd()
