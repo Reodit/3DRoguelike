@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public float rotateSpeed = 15f; // 회전 속도
     public float moveSpeed = 10f;   // 이동 속도
@@ -30,8 +30,10 @@ public class PlayerInput : MonoBehaviour
         v = Input.GetAxisRaw("Vertical");
         jumpDown = Input.GetButtonDown("Jump");
         
-        Jump();
-
+        if(jumpDown && !isJump)
+        {
+            Jump();
+        }
     }
     private void FixedUpdate()
     {
@@ -56,15 +58,10 @@ public class PlayerInput : MonoBehaviour
     }
     void Jump()
     {
-        if(jumpDown && !isJump)
-        {
-            rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-            anim.SetBool("isJump", true);
-            anim.SetTrigger("Jump");
-            isJump = true;
-        }
-        
-
+        rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+        anim.SetBool("isJump", true);
+        anim.SetTrigger("Jump");
+        isJump = true;
     }
     private void OnCollisionEnter(Collision collision)
     {
