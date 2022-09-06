@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LV2_IceNova 2
   m_EditorClassIdentifier: 
   skillName: IceNova2
+  isUlti: 1
   skillDamage: 50
   skillArea: 2
   skillSpeed: 0
