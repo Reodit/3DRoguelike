@@ -11,6 +11,9 @@ public class Item : MonoBehaviour
     public float regenTime;
     RaycastHit hitInfo;
     private float mDistance;
+    public float[] mPercentage;
+    public string[] mItemName;
+
     public float itemMagentDistance = 30;
 
     private Vector3 myDistance;
@@ -26,16 +29,39 @@ public class Item : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // 아이템 추가 획
-    void GetAdditionalItem()
+    // Get item for Percentage 
+    float GetItemPercentage()
     {
-        // UI 띄우ㄱ
-    }   
+        float[] probs = mPercentage;
+        string[] items = mItemName;
+
+        float total = 0;
+
+        foreach (float elem in probs)
+        {
+            total += elem;
+        }
+
+        float randomPoint = Random.value * total;
+
+        for (int i = 0; i < probs.Length; i++)
+        {
+            if (randomPoint < probs[i])
+            {
+                Debug.Log(" 당첨 : " + items[i]);
+                return i;
+            }
+            else
+            {
+                randomPoint -= probs[i];
+            }
+        }
+        return probs.Length - 1;
+    }
 
     // 플레이어가 아이템 가까이 가면 아이템 삭제하고 아이템 획득
     void GetItem()
     {
-        Debug.Log("mDistance : " + mDistance);
         if (mDistance < itemMagentDistance)
         {
             this.transform.position += new Vector3(Mathf.Lerp(myXDistance, pXDistance, Time.deltaTime), 0, Mathf.Lerp(myZDistance, pZDistance, Time.deltaTime * 0.01f));
@@ -47,7 +73,6 @@ public class Item : MonoBehaviour
     void PlayerDistanceCheck()
     {
         mDistance = Vector3.Distance(myDistance, pDistance);
-        Debug.Log("mDistance : " + mDistance);
     }
 
 
@@ -80,10 +105,11 @@ public class Item : MonoBehaviour
         pZDistance = player.transform.position.z;
 
 
-        Debug.Log("myDistance : " + myDistance);
-        Debug.Log("pDistance : " + pDistance);
+
         GetItem();
         PlayerDistanceCheck();
+
+        GetItemPercentage();
     }
 
     private void OnCollisionEnter(Collision collision)
