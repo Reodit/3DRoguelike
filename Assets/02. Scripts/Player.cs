@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public float recovery;          // 회복
     //public float jumpPower = 5f;    // 점프력
 
+    private Vector3 moveDir;
     private Vector3 moveVec; // 이동 벡터
     private Vector3 dodgeVec; // 회피 벡터
     private Vector3 attackVec; // 공격 벡터
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     private bool NormalAtkDelay;
     private float delayTime = 0.5f;
     private float timer = 0f;
+    public int attackNum;
 
     Animator anim;
     Rigidbody rigid;
@@ -41,7 +43,7 @@ public class Player : MonoBehaviour
         dodgeDown = Input.GetButtonDown("Jump");
         attackDown = Input.GetButtonDown("NormalAttack");
 
-        if (dodgeDown && !isDodge && moveVec != Vector3.zero)
+        if (dodgeDown && !isDodge && moveDir != Vector3.zero)
         {
             Dodge();
         }
@@ -51,38 +53,54 @@ public class Player : MonoBehaviour
             NormalAttack();
         }
         NormalAttackDelay();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            attackNum = Random.Range(1, 5);
+            Debug.Log(attackNum);
+
+        }
     }
     private void FixedUpdate()
     {
-        Move(h, v);
+        Move();
         Turn();
     }
-    void Move(float h, float v)
+    void Move()
     {
-        moveVec.Set(h, 0, v);
-        moveVec = moveVec.normalized * moveSpeed * Time.deltaTime;
+        moveDir = new Vector3(h, 0, v).normalized;
 
- 
-        
+        if (isNormalAtk)
+        {
+            moveDir = attackVec;
+        }
+
         if (isDodge)
         {
-            moveVec = dodgeVec;
+            moveDir = dodgeVec;
         }
-        rigid.MovePosition(transform.position + moveVec);
+        rigid.MovePosition(transform.position + (moveDir * moveSpeed * Time.deltaTime));
 
-        anim.SetBool("isMove", moveVec != Vector3.zero);
+        anim.SetBool("isMove", moveDir != Vector3.zero);
     }
     void Turn()
     {
-        if (h == 0 && v == 0) return;
+        transform.LookAt(transform.position + moveDir) ;
+        //if (h == 0 && v == 0) return;
 
-        Quaternion rot = Quaternion.LookRotation(moveVec);
+        //else
+        //{
+        //    Quaternion rot = Quaternion.LookRotation(moveDir);
 
-        rigid.rotation = Quaternion.Slerp(rigid.rotation, rot, rotateSpeed * Time.deltaTime);
+        //    //rigid.rotation = Quaternion.Slerp(rigid.rotation, rot, rotateSpeed * Time.deltaTime);
+
+        //    transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * rotateSpeed);
+        //}
+
     }
     void Dodge()
     {
-        dodgeVec = moveVec;
+        dodgeVec = moveDir;
         anim.SetTrigger("Dodge");
         isDodge = true;
 
@@ -96,13 +114,13 @@ public class Player : MonoBehaviour
     {
         if (!NormalAtkDelay)
         {
-            attackVec = moveVec;
+            attackVec = moveDir;
             NormalAtkDelay = true;
             isNormalAtk = true;
             Debug.Log("Attack");
-            anim.SetTrigger("NormalAttack");
+            anim.Play("NormalAttack");
 
-            Invoke("NormalAttackEnd", 0.5f);
+            Invoke("NormalAttackEnd", delayTime);
         }
     }
     void NormalAttackEnd()
@@ -122,4 +140,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    void Attack()
+    {
+
+    }
 }
