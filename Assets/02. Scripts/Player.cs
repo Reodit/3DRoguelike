@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     private bool attackDown;
 
     private bool NormalAtkDelay;
-    private float delayTime = 0.5f;
+    private float delayTime = 2f;
     private float timer = 0f;
     public int attackNum;
 
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
         if (isNormalAtk)
         {
-            moveDir = attackVec;
+            moveDir = Vector3.zero;
         }
 
         if (isDodge)
@@ -114,7 +114,6 @@ public class Player : MonoBehaviour
     {
         if (!NormalAtkDelay)
         {
-            attackVec = moveDir;
             NormalAtkDelay = true;
             isNormalAtk = true;
             Debug.Log("Attack");
